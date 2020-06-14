@@ -1,45 +1,124 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <title>@ViewBag.Title - Artshop</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body onload="showSession()">
+    <div class="contenedor">
+        <header class="cabecera">
+            <h1 id="titulo"> ArtShop</h1>
+            <a href="javascript:Logout()" class="logout-window"> / Logout</a>
+            <a href="#login-box" class="login-window">Login</a>
+
+            <div id="ctrl_storage">
+                <p id="Suser"></p>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+            <p id="subtitulo">Galeria de Arte</p>
+
+            <div id="login-box" class="login-popup">
+                <a href="~/Home/Index" class="close"><img src="~/Content/image/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+                <form method="post" class="signin" action="">
+                    <fieldset class=" textbox">
+                        <label class="username">
+                            <span>Username or email</span>
+                            <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+                        </label>
+                        <label class="password">
+                            <span>Password</span>
+                            <input id="password" name="password" value="" type="password" placeholder="Password">
+                        </label>
+
+                        <button id="login2" class="submit button" type="button">Ingresar</button>
+
+                        <p>
+                            <a class="forgot" href="~/Home/Index">Olvido su clave?</a>
+                        </p>
+                    </fieldset>
+                </form>
             </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+
+            <nav>
+                <div class="menu" id="uno">
+                    <a href="~/Home/Index">
+                        <img class="icon" src="~/Content/image/icon1.png">
+                    </a>
+                    <p class="texto">Cuadros Destacados</p>
+                    <ul>
+                        <a id="Reserva_Item1" class="texto" href="~/Reserva/Index"></a>
+
+
+                    </ul>
+                </div>
+
+                <div class="menu" id="dos">
+                    <a href="~/Home/Index">
+                        <img class="icon" src="~/Content/image/icon2.png">
+                    </a>
+                    <p class="texto">Catalogo de Cuadros</p>
+                    <ul>
+                        <li>
+                            <a id="Reserva_Item1" class="texto" href="~/Reserva/Index"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu" id="tres">
+                    <!-- <a href="~/Genero/Index" class="menu_genero">-->
+                    <a href="/ABM/AltaArtistasView" class="menu_genero">
+                        <img class="icon" src="~/Content/image/icon3.png">
+                    </a>
+                    <p class="texto">ABM</p>
+                    <ul>                                             
+                    </ul>
+
+
+                </div>
+
+                <div class="menu" id="cuatro">
+                    <a href="~/Home/Index">
+                        <img class="icon" src="~/Content/image/icon4.png">
+                    </a>
+                    <p class="texto">Solicitar Cuadro</p>
+                </div>
+
+                <div class="menu" id="cinco">
+                    <a href="~/Home/Nosotros">
+                        <img class="icon" src="~/Content/image/icon5.png">
+                    </a>
+                    <p class="texto">Quienes somos</p>
+
+                </div>
+
+                <div class="menu" id="seis">
+                    <a href="~/Home/Contacto">
+                        <img class="icon" src="~/Content/image/icon6.png">
+                    </a>
+                    <p class="texto">Contactenos</p>
+                </div>
+            </nav>
+
+        </header>
+        <section>
+            <div class="contenedor">
+
+                @RenderBody()
+            </div>
+
+        </section>
+
+
+        <footer class="pie">
+            <p>  &copy; @DateTime.Now.Year - Copyright Universidad Abierta Interamericana </p>
         </footer>
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
 </body>
 </html>

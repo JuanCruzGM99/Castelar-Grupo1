@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace Art_shop_Website.Controllers
 {
-    public class HomeController : Controller
+    public class ABMController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        // GET: ABM
+        public ActionResult AltaArtistasView()
         {
             return View();
         }
-
     }
 }

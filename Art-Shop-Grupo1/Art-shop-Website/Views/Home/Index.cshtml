@@ -1,31 +1,39 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="datagrid">
+    <div class="tabla">
+        <table>
+
+            <tbody id="imagenes ">
+                <tr><td div class="carta"><img src="~/Content/image/1.jpg"></td><td><img src="~/Content/image/2.jpg"></td><td><img src="~/Content/image/3.jpg"></td><td><img src="~/Content/image/4.png"></td></tr>
+                <tr><td div class="carta"><img src="~/Content/image/5.jpg"></td><td><img src="~/Content/image/6.jpg"></td><td><img src="~/Content/image/7.png"></td><td><img src="~/Content/image/8.jpg"></td></tr>
+                <tr><td div class="carta"><img src="~/Content/image/9.jpg"></td><td><img src="~/Content/image/10.png"></td><td><img src="~/Content/image/11.png"></td><td><img src="~/Content/image/12.jpg"></td></tr>
+                <tr><td div class="carta"><img src="~/Content/image/13.jpg"></td><td><img src="~/Content/image/14.png"></td><td><img src="~/Content/image/15.jpg"></tr>
+            </tbody>
+
+
+        </table>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    <aside>
+        <div class="lateral">
+            <p class=" texto"> Cuadros Destacados </p>
+
+            <table>
+                <tr>
+                    <td><img class="imagenes" src="~/Content/image/1.jpg"></td>
+                </tr>
+                <tr>
+                    <td><img class="imagenes" src="~/Content/image/2.jpg"></td>
+                </tr>
+                <tr>
+                    <td><img class="imagenes" src="~/Content/image/3.jpg"></td>
+                </tr>
+
+            </table>
+        </div>
+    </aside>
 </div>
