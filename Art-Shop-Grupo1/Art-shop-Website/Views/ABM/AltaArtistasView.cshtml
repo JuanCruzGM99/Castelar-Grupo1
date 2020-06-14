@@ -4,5 +4,34 @@
 }
 
 <h2>AltaArtistasView</h2>
-
-
+<div>
+    <table>
+        <tr>
+            <th>
+                Código
+            </th>
+            <td>
+                <input id="txtCodigo" type="number" placeholder="Ingrese codigo artista" />
+            </td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td> <input id="txtNombre" type="text" /> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td> <input type="checkbox" /> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <input type="button" value="Grabar" id="btnSave" class="myButton" />
+                <input type="button" value="Listar" id="btnToList" class="myButton" />
+            </td>
+        </tr>
+    </table>
+    <p>
+        <h3>Listado de artistas</h3>
+    </p>
+    <div id="divBody">No hay registros</div>
+</div>
