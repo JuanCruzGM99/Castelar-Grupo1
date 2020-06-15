@@ -1,39 +1,46 @@
-﻿
+﻿@model IEnumerable<Art_Shop_Data.Model.Product>
+
 @{
-    ViewBag.Title = "Index";
+    
+   ViewBag.Title = "Index";
 }
 
+<p class=" texto"> Catalogo de Cuadros</p>
+<table>
 
-<div class="datagrid">
-    <div class="tabla">
-        <table>
+    <tbody id="imagenes ">
 
-            <tbody id="imagenes ">
-                <tr><td div class="carta"><img src="~/Content/image/1.jpg"></td><td><img src="~/Content/image/2.jpg"></td><td><img src="~/Content/image/3.jpg"></td><td><img src="~/Content/image/4.png"></td></tr>
-                <tr><td div class="carta"><img src="~/Content/image/5.jpg"></td><td><img src="~/Content/image/6.jpg"></td><td><img src="~/Content/image/7.png"></td><td><img src="~/Content/image/8.jpg"></td></tr>
-                <tr><td div class="carta"><img src="~/Content/image/9.jpg"></td><td><img src="~/Content/image/10.png"></td><td><img src="~/Content/image/11.png"></td><td><img src="~/Content/image/12.jpg"></td></tr>
-                <tr><td div class="carta"><img src="~/Content/image/13.jpg"></td><td><img src="~/Content/image/14.png"></td><td><img src="~/Content/image/15.jpg"></tr>
-            </tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>   @item.Title @item.Id</td>
+
+            }
+        </tr>
+                <tr><td div id="imagenes"><a href="~/Home/Index"><img src="~/Content/image/1.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/2.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/3.jpg"></a></td></tr>
+                <tr><td div class="imagenes"><a href="~/Home/Index"><img src="~/Content/image/4.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/5.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/6.jpg"></a></td></tr>
+                <tr><td div class="imagenes"><a href="~/Home/Index"><img src="~/Content/image/7.jpg"></a></td></tr>
 
 
-        </table>
-    </div>
-    <aside>
-        <div class="lateral">
-            <p class=" texto"> Cuadros Destacados </p>
 
-            <table>
-                <tr>
-                    <td><img class="imagenes" src="~/Content/image/1.jpg"></td>
-                </tr>
-                <tr>
-                    <td><img class="imagenes" src="~/Content/image/2.jpg"></td>
-                </tr>
-                <tr>
-                    <td><img class="imagenes" src="~/Content/image/3.jpg"></td>
-                </tr>
+</tbody>
 
-            </table>
-        </div>
-    </aside>
-</div>
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <script>
+
+        $("#imagenes").click(function () 
+        {
+            $("#imagenes").val("");
+
+        });
+
+    </script>
+
+}

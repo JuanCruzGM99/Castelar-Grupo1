@@ -5,12 +5,20 @@
 }
 
 body {
+  
+}
+
+img {
+    height: 261px;
+    width: 261px;
 }
 
 .datagrid table {
     border-collapse: collapse;
     text-align: left;
     width: 100%;
+    height:100%;
+    padding: 0px;
 }
 
 .datagrid {
@@ -21,6 +29,7 @@ body {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    padding: 0px;
 }
 
     .datagrid table td, .datagrid table th {
@@ -47,7 +56,7 @@ body {
     }
 
     .datagrid table tfoot thead td {
-        padding: 0;
+        padding:10px;
         font-size: 12px
     }
 
@@ -56,13 +65,13 @@ body {
         }
 
         .datagrid table tfoot thead td ul {
-            margin: 0;
-            padding: 0;
+            margin: 10px;
+            padding: 10px;
             list-style: none;
             text-align: right;
         }
 
-    .datagrid table tfoot thead li {
+    .datagrid table tfoot thead li form {
         display: inline;
     }
 
@@ -82,29 +91,8 @@ body {
             background-color: #006699;
         }
 
-    .datagrid table tfoot thead ul.active, .datagrid table tfoot thead ul a:hover {
-        text-decoration: none;
-        border-color: #006699;
-        color: #FFFFFF;
-        background: none;
-        background-color: #00557F;
-    }
 
-div.dhtmlx_window_active, div.dhx_modal_cover_dv {
-    position: fixed !important;
-}
 
-hr.faded {
-    clear: both;
-    float: none;
-    width: 100%;
-    height: 1px;
-    margin: 1.4em 0;
-    border: none;
-    background: #ddd;
-    background-image: -webkit-gradient( linear, left bottom, right bottom, color-stop(0, rgb(255,255,255)), color-stop(0.1, rgb(221,221,221)), color-stop(0.9, rgb(221,221,221)), color-stop(1, rgb(255,255,255)) );
-    background-image: -moz-linear-gradient( left center, rgb(255,255,255) 0%, rgb(221,221,221) 10%, rgb(221,221,221) 90%, rgb(255,255,255) 100% );
-}
 
 .contenedor {
     width: 1200px;
@@ -114,6 +102,7 @@ hr.faded {
     font: 12px bold helvetica,verdana;
     margin: auto;
     background-color: #72112b;
+
 }
 
 
@@ -126,41 +115,14 @@ hr.faded {
     height: 350px;
 }
 
-#contenido {
-    width: 100%;
-}
-
-#trabajo {
-    width: 70%;
-    text-align: center;
-}
 
 #formulario {
+    float:left;
     width: 70%;
     text-align: center;
     background-color: rgb(233,147,26);
-}
 
-#contenido h2 {
-    text-align: center;
 }
-
-#login {
-    position: absolute;
-    z-index: 0;
-}
-
-    #login:before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        border: 1px dashed #ccc;
-        top: 5px;
-        bottom: 5px;
-        left: 5px;
-        right: 5px;
-        box-shadow: 0 0 0 1px #fff;
-    }
 
 
 h1#titulo {
@@ -186,95 +148,84 @@ p#subtitulo {
 }
 
 
-#ctrl_storage {
-    float: right;
-    width: 20%;
-    background-color: white;
-    margin: auto;
-}
+
 
 .tabla {
     float: left;
     width: 70%;
+    height: 900px;
+    overflow:auto;
     background-color: rgb(233,147,26);
     margin: auto;
+    padding: 0px;
 }
 
     .tabla table th {
         border: double;
     }
 
-    .tabla table tr {
+    .tabla table td {
         height: 2px;
         vertical-align: bottom;
-        position: relative;
+        /*position: relative;*/
     }
 
-    .tabla tr:nth-child(even) {
-        background-color: rgb(208,101,3)
+    .tabla td:nth-child(even) {
+        background-color: rgb(233,147,26);
     }
 
-    .tabla tr:hover {
-        background-color: #f5f5f5
+    .tabla td:hover {
+   
+        background-color: rgb(208,101,3);
     }
 
 
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: darkred;
-    opacity: 0.5;
-    z-index: 50;
-}
+
 
 .lateral {
     float: right;
-    padding: 1px;
-    width: 28%;
-    background-color: rgb(208,101,3);
+    padding: 0px 15px 0px 40px;
+    width: 25%;
+    height: 900px;
+    background-color: #72112b;
+    margin: auto;
+    display: inline-block;
+    overflow: auto;
 }
 
-    .lateral table tr td {
-        vertical-align: middle;
+    .lateral table td {
+        position: relative;
+        background-color: #72112b;
+   
+    }
+
+    .lateral td:hover {
+        padding: 0px 10px 0px 30px;
+        background-color: rgb(208,101,3);
     }
 
 .pie {
     background-color: #72112b;
+    padding: 0px;
     color: white;
     float: left;
     width: 100%;
     text-align: center;
     margin: auto;
     height: 50px;
+    clear: both;
 }
 
-#uno {
+#par {
     background-color: rgb(208,101,3);
 }
 
-#dos {
+#impar {
     background-color: rgb(233,147,26);
 }
 
-#tres {
-    background-color: rgb(208,101,3);
-}
 
-#cuatro {
-    background-color: rgb(233,147,26);
-}
-
-#cinco {
-    background-color: rgb(208,101,3);
-}
-
-#seis {
-    background-color: rgb(233,147,26);
-}
 
 img.icon {
     display: block;
@@ -285,6 +236,7 @@ img.icon {
     -webkit-border-radius: 50%;
     -webkit-box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
     -webkit-transition: box-shadow .4s;
+    height:40px;
 }
 
 
@@ -308,137 +260,19 @@ p.texto {
     }
 
 .lateral p.texto {
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     opacity: 1;
 }
-
 
 .menu:hover img.icon {
     -webkit-box-shadow: 0px 0px 0px 0px rgba(255,255,255,.6);
 }
 
-.login-window {
-    float: right;
-    color: blue;
-}
 
-.logout-window {
-    float: right;
-}
-
-#mask {
-    display: none;
-    background: #000;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 10;
+.imagenes {
     width: 100%;
-    height: 100%;
-    opacity: 0.8;
-    z-index: 999;
-}
-
-/* You can customize to your needs  */
-.login-popup {
-    display: none;
-    background: #333;
-    padding: 10px;
-    border: 2px solid #ddd;
-    float: left;
-    font-size: 1.2em;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 99999;
-    box-shadow: 0px 0px 20px #999;
-    /* CSS3 */
-    -moz-box-shadow: 0px 0px 20px #999;
-    /* Firefox */
-    -webkit-box-shadow: 0px 0px 20px #999;
-    /* Safari, Chrome */
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px;
-    /* Firefox */
-    -webkit-border-radius: 3px;
-}
-
-img.btn_close {
-    float: right;
-    margin: -28px -28px 0 0;
-}
-
-fieldset {
-    border: none;
-}
-
-form.signin .textbox label {
-    display: block;
-    padding-bottom: 7px;
-}
-
-form.signin .textbox span {
-    display: block;
-}
-
-form.signin p, form.signin span {
-    color: #999;
-    font-size: 11px;
-    line-height: 18px;
-}
-
-form.signin .textbox input {
-    background: #666666;
-    border-bottom: 1px solid #333;
-    border-left: 1px solid #000;
-    border-right: 1px solid #333;
-    border-top: 1px solid #000;
-    color: #fff;
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    font: 13px Arial, Helvetica, sans-serif;
-    padding: 6px 6px 4px;
-    width: 200px;
-}
-
-form.signin input:-moz-placeholder {
-    color: #bbb;
-    text-shadow: 0 0 2px #000;
-}
-
-form.signin input::-webkit-input-placeholder {
-    color: #bbb;
-    text-shadow: 0 0 2px #000;
-}
-
-.button {
-    background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-    background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-    background: -o-linear-gradient(top, #f3f3f3, #dddddd);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-    border-color: #000;
-    border-width: 1px;
-    border-radius: 4px 4px 4px 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    color: #333;
-    cursor: pointer;
-    display: inline-block;
-    padding: 6px 6px 4px;
-    margin-top: 1px;
-    font: 12px;
-    width: 214px;
-}
-
-    .button:hover {
-        background: #ddd;
-    }
-
-imagenes {
-    width: 100%;
-    height: 178px;
     object-fit: contain;
-    border: 1px solid black;
     justify-content: center;
+     
 }
+

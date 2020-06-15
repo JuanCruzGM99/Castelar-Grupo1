@@ -44,8 +44,11 @@
     <Compile Include="Model\Artist.cs" />
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\CartItem.cs" />
+    <Compile Include="Model\InMemoryProductoData.cs" />
     <Compile Include="Model\Error.cs" />
     <Compile Include="Model\Identity.cs" />
+    <Compile Include="Model\IEnumerableProducto.cs" />
+    <Compile Include="Model\IProductoData.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderDetail.cs" />
     <Compile Include="Model\OrderNumber.cs" />
