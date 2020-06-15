@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Art_shop_Website.Models
 {
-    public class ExternalLoginConfirmationViewModel
+   public class ExternalLoginConfirmationViewModel
     {
         [Required]
         [Display(Name = "Correo electrónico")]
