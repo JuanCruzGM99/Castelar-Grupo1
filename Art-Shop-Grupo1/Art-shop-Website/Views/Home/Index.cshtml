@@ -1,23 +1,46 @@
-﻿
+﻿@model IEnumerable<Art_Shop_Data.Model.Product>
+
 @{
-    ViewBag.Title = "Index";
-}
- 
-            <p class=" texto"> Catalogo de Cuadros</p>
-            <table>
-
-                <tbody id="imagenes ">
-                    <tr><td div class="imagenes"><img src="~/Content/image/1.jpg"></td><td><img src="~/Content/image/2.jpg"></td><td><img src="~/Content/image/3.jpg"></td></tr>
-                    <tr><td div class="imagenes"><img src="~/Content/image/4.jpg"></td><td><img src="~/Content/image/5.jpg"></td><td><img src="~/Content/image/6.jpg"></td></tr>
-
-                    <tr> <td div class="imagenes"><img src="~/Content/image/7.jpg"></td></tr>
-
-                    <tr> <td div class="imagenes"><img src="~/Content/image/7.jpg"></td></tr>
-
-
-                </tbody>
-
-
-            </table>
     
+   ViewBag.Title = "Index";
+}
 
+<p class=" texto"> Catalogo de Cuadros</p>
+<table>
+
+    <tbody id="imagenes ">
+
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>   @item.Title @item.Id</td>
+
+            }
+        </tr>
+                <tr><td div id="imagenes"><a href="~/Home/Index"><img src="~/Content/image/1.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/2.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/3.jpg"></a></td></tr>
+                <tr><td div class="imagenes"><a href="~/Home/Index"><img src="~/Content/image/4.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/5.jpg"></a></td><td><a href="~/Home/Index"><img src="~/Content/image/6.jpg"></a></td></tr>
+                <tr><td div class="imagenes"><a href="~/Home/Index"><img src="~/Content/image/7.jpg"></a></td></tr>
+
+
+
+</tbody>
+
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <script>
+
+        $("#imagenes").click(function () 
+        {
+            $("#imagenes").val("");
+
+        });
+
+    </script>
+
+}

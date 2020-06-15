@@ -232,6 +232,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ABM\AltaArtistasView.cshtml" />
+    <Content Include="Views\Home\Contacto.cshtml" />
+    <Content Include="Views\Home\Nosotros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -244,6 +246,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Art-Shop-Data\Art-Shop-Data.csproj">
+      <Project>{dee38c0c-261b-4241-add9-1d540aa62d7f}</Project>
+      <Name>Art-Shop-Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
