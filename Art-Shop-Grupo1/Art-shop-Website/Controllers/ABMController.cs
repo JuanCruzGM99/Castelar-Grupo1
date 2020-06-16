@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Art_Shop_Data;
+using Art_Shop_Data.Model;
 
 namespace Art_shop_Website.Controllers
 {
@@ -11,7 +13,8 @@ namespace Art_shop_Website.Controllers
         // GET: ABM
         public ActionResult AltaArtistasView()
         {
-            return View();
+            var model = new Artist();
+            return View(model);
         }
     }
 }
