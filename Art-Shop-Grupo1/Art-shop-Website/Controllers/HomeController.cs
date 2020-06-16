@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Art_Shop_Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,38 @@ namespace Art_shop_Website.Controllers
 {
     public class HomeController : Controller
     {
+
+        readonly IProductoData db;
+
+        // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var model = db.GetAll();
+            return View(model);
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Index(string data)
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
+        public ActionResult Contacto(string data)
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+        public ActionResult Nosotros(string data)
+        {
+            return View();
+        }
+
+
+
+        public HomeController()
+        {
+            db = new InMemoryProductoData();
+
+        }
+
+
     }
 }

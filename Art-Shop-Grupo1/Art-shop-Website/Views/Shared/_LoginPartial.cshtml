@@ -3,20 +3,50 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+            @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+
+
+
+        <div class="menu" id="par">
+            <a href="~/Manage/Index">
+                <img class="icon" src="~/Content/image/icon5.png">
+            </a>
+            <p class="texto">Hola + User.Identity.GetUserName()+ "!" </p>
+
+        </div>
+        <div class="menu" id="impar">
+            <a href="javascript:document.getElementById('logoutForm').submit()">
+                <img class="icon" src="~/Content/image/icon6.png">
+            </a>
+            <p class="texto">Cerrar sesión</p>
+
+        </div>
+
+  
+
+
+
     </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    <div class="menu" id="par">
+        <a href="~/Account/Register">
+            <img class="icon" src="~/Content/image/icon5.png">
+        </a>
+        <p class="texto">Registrarse</p>
+        
+    </div>
+    <div class="menu" id="impar">
+        <a href="~/Account/Login">
+            <img class="icon" src="~/Content/image/icon6.png">
+        </a>
+        <p class="texto">Iniciar sesión</p>
+
+    </div>
+</ul>
 }

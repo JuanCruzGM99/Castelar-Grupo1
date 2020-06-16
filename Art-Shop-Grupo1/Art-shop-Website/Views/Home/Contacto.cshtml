@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div id="formulario">
+
+
+
+        @using (Html.BeginForm("Contacto", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <h2>Contacto</h2>
+            @Html.AntiForgeryToken()
+            <h4>Por favor complete los siguientes datos asi lo contactamos </h4>
+            <hr />
+            <div class="form-group">
+                @Html.Label("Full Name", "Nombre Completo", new { @class = "label" })
+                <div class="col-md-10">
+                    @Html.TextBox("txtNombre", "", new { @placeholder = "Ingrese su Nombre Completo", @class = "fields" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Full Name", "Numero Telefonico", new { @class = "label" })
+                <div class="col-md-10">
+                    @Html.TextBox("txtTelefono", "", new { @placeholder = "Ingrese su Telefono", @class = "fields" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Mail", "Mail", new { @class = "label" })
+                <div class="col-md-10">
+                    @Html.TextBox("txtMail", "", new { @placeholder = "Ingrese su Mail", @class = "fields" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.Label("Full Name", "Mensaje", new { @class = "label" })
+                <div class="col-md-10">
+                    @Html.TextBox("txtMensaje", "", new { @placeholder = "Ingrese su Mensaje", @class = "fields-height" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="button" value="Enviar" />
+
+                </div>
+            </div>
+
+            <br />
+
+        }
+
+    </div>
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

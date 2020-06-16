@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "AltaArtistas";
+}
+
+<h2>Gestion de Artistas</h2>
+<hr />
+<div>
+
+    <form autocomplete="off">
+        <fieldset>
+            <legend>Formulario</legend>
+            <div class="form-group row">
+                <label for="nombre">Nombre</label>
+                <div>
+                    <input type="text" class="form-control" id="nombre" value="" placeholder="Ingrese nombre del artista">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="apellido">Apellido</label>
+                <div>
+                    <input type="text" class="form-control" id="apellido" value="" placeholder="Ingrese apellido del artista">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lifespan">LifeSpan</label>
+                <div>
+                    <input type="text" class="form-control" id="lifespan" value="" placeholder="Ingrese esperanza de vida">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pais">Pais</label>
+                <div>
+                    <input type="text" class="form-control" id="pais" value="" placeholder="Ingrese pais del artista">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="descripcion">Descripcion</label>
+                <div>
+                    <input type="text" class="form-control" id="descripcion" value="" placeholder="Ingrese descripcion del artista">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="productos">Productos</label>
+                <div>
+                    <input type="text" class="form-control" id="productos" value="" placeholder="Ingrese productos">
+                </div>
+            </div> 
+
+            <button type="button" id="btnSave"  onclick="save();">Grabar</button>
+            <button type="button" id="btnList"  onclick="listArtist();">Listar Artistas</button>
+        </fieldset>
+    </form>
+</div>
+<hr />
+<div id="listaArtistas">
+
+</div>
+
+@section scripts{
+    <script>
+        var artistas = new Array();
+        function Artist() {
+            this.setNombre = function (value) {
+                this._nombre = value;
+            }
+            this.getNombre = function () {
+                return this._nombre;
+            }
+            this.setApellido = function (value) {
+                this._apellido = value;
+            }
+            this.getApellido = function () {
+                return this._apellido;
+            }
+            this.setLifeSpan = function (value) {
+                this._lifespan = value;
+            }
+            this.getLifeSpan = function () {
+                return this._lifespan;
+            }
+            this.setDescripcion = function (value) {
+                this._descripcion = value;
+            }
+            this.getDescripcion = function () {
+                return this._descripcion;
+            }
+            this.setProductos = function (value) {
+                this._productos = value;
+            }
+            this.getProductos = function () {
+                return this._productos;
+            }
+            this.setPais = function (value) {
+                this._pais = value;
+            }
+            this.getPais = function () {
+                return this._pais;
+            }
+        }
+        // Eventos de los botones
+        function save() {
+            var c = new Artist();
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+            var lifespan = document.getElementById("lifespan").value;
+            var descripcion = document.getElementById("descripcion").value;
+            var producto = document.getElementById("productos").value;
+            var pais = document.getElementById("pais").value;
+            c.setNombre(nombre);
+            c.setApellido(apellido);
+            c.setPais(pais);
+            c.setLifeSpan(lifespan);
+            c.setDescripcion(descripcion);
+            c.setProductos(producto);
+
+            // Guardo constelación en el array
+            artistas.push(c);
+            // Limpio inputs
+            
+            document.getElementById("nombre").value = "";
+            document.getElementById("apellido").value = "";
+            document.getElementById("lifespan").value = "";
+            document.getElementById("descripcion").value = "";
+            document.getElementById("pais").value = "";
+            document.getElementById("productos").value = "";
+
+        }
+        function listArtist() {
+            var divResultado = document.getElementById("listaArtistas");
+            divResultado.innerHTML = "";
+            if (artistas.length == 0) {
+                divResultado.innerHTML = "No hay artistas cargados.";
+                return;
+            }
+            for (let i = 0; i < artistas.length; i++) {
+                let c = artistas[i];
+                divResultado.innerHTML += "Nombre: " + c.getNombre() + " - Apellido: " + c.getApellido() + " - Esperanza de Vidas: " + c.getLifeSpan() + " - Pais: " + c.getPais() + " - Descripcion: " + c.getDescripcion() + " - Productos: " + c.getProductos() +"<br />";
+            }
+        }
+    </script>
+
+}
