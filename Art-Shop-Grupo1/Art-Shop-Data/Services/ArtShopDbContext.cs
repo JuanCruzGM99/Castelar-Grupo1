@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Art_Shop_Data.Services
 {
-    public partial class RestoDbContext : DbContext
+    public partial class ArtShopDbContext : DbContext
     {
-        public RestoDbContext() : base("name=DefaultConnection")
+        public ArtShopDbContext() : base("name=DefaultConnection")
         {
-            Database.SetInitializer<RestoDbContext>(null);
+            Database.SetInitializer<ArtShopDbContext>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
