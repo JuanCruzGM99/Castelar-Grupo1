@@ -12,11 +12,11 @@ namespace Art_Shop_Data.Services
 {
     public class BaseDataService<T> : IDataService<T> where T : Identity, new()
     {
-        protected RestoDbContext _db;
+        protected ArtShopDbContext _db;
 
         public BaseDataService()
         {
-            _db = new RestoDbContext();
+            _db = new ArtShopDbContext();
         }
 
         public List<ValidationResult> ValidateModel(T model)
