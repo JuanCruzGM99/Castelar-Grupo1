@@ -17,11 +17,11 @@ namespace Art_Shop_Data.Model
 
         public String Image { get; set; }
 
-        public float Price { get; set; }
+        public double Price { get; set; }
 
         public int QuantitySold { get; set; }
 
-        public float AvgStars { get; set; }
+        public double AvgStars { get; set; }
 
 
         public Product()
