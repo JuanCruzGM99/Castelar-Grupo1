@@ -19,7 +19,7 @@ namespace Art_Shop_Data.Model
         {
             this.Id = id;
             this.Number = Number;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;

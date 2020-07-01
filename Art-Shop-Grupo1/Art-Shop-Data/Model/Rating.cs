@@ -27,7 +27,7 @@ namespace Art_Shop_Data.Model
             this.UserId = UserId;
             this.ProductId = ProductId;
             this.Stars = Star;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;

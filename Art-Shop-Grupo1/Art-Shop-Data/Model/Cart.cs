@@ -26,7 +26,7 @@ namespace Art_Shop_Data.Model
             this.Cookie = Cookie;
             this.CartDate = CartDate;
             this.ItemCount = ItemCount;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;

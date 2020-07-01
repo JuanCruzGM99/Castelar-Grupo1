@@ -12,7 +12,7 @@ namespace Art_Shop_Data.Model
 
         public int Id { get; set; }
 
-        public DateTime CreateOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public String CreatedBy { get; set; }
 

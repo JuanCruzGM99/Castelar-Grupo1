@@ -40,7 +40,7 @@ namespace Art_Shop_Data.Model
             this.Price = Price;
             this.QuantitySold = QuantitySold;
             this.AvgStars = AvgStars;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;
