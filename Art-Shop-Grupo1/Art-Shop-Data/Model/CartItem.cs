@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +12,13 @@ namespace Art_Shop_Data.Model
 
         public int CartId { get; set; }
 
+        [DisplayName("Id de producto")]
         public int ProductId { get; set; }
 
-        public float Price { get; set; }
+        [DisplayName("Precio")]
+        public double Price { get; set; }
 
+        [DisplayName("Cantidad")]
         public int Quantity { get; set; }
 
         public CartItem()
@@ -22,7 +26,7 @@ namespace Art_Shop_Data.Model
 
         }
 
-        public CartItem(int id, int CartId, int ProductId, float Price, int Quantity, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
+        public CartItem(int id, int CartId, int ProductId, double Price, int Quantity, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
         {
 
             this.Id = id;
@@ -30,7 +34,7 @@ namespace Art_Shop_Data.Model
             this.ProductId = ProductId;
             this.Price = Price;
             this.Quantity = Quantity;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;
