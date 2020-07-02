@@ -1,4 +1,5 @@
 ﻿using Art_Shop_Data.Model;
+using Art_Shop_Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,14 @@ namespace Art_shop_Website.Controllers
     public class HomeController : Controller
     {
 
-        readonly IProductoData db;
+        // readonly IProductoData db;
+        private BaseDataService<Product> db;
+
 
         // GET: Home
         public ActionResult Index()
         {
-            var model = db.GetAll();
+            var model = db.Get();
             return View(model);
         }
 
@@ -37,7 +40,7 @@ namespace Art_shop_Website.Controllers
 
         public HomeController()
         {
-            db = new InMemoryProductoData();
+            db = new BaseDataService<Product>();
 
         }
 

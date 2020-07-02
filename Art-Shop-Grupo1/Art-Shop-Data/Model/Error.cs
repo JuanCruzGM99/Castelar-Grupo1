@@ -41,7 +41,7 @@ namespace Art_Shop_Data.Model
             this.Everything = Everything;
             this.HttpReferer = HttpReferer;
             this.PathAndQuery = PathAndQuery;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;

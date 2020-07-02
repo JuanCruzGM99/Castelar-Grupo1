@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace Art_Shop_Data.Model
         public String Cookie { get; set; }
 
         public DateTime CartDate { get; set; }
+
+        [DisplayName("Cantidad")]
 
         public int ItemCount { get; set; }
 
@@ -26,7 +29,7 @@ namespace Art_Shop_Data.Model
             this.Cookie = Cookie;
             this.CartDate = CartDate;
             this.ItemCount = ItemCount;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;

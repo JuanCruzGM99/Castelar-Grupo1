@@ -35,7 +35,7 @@ namespace Art_Shop_Data.Model
             this.Country = Country;
             this.Description = Description;
             this.TotalProducts = TotalProducts;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;

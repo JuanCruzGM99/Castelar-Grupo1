@@ -30,7 +30,7 @@ namespace Art_Shop_Data.Model
             this.ProductId = ProductId;
             this.Price = Price;
             this.Quantity = Quantity;
-            this.CreateOn = CreateOn;
+            this.CreatedOn = CreatedOn;
             this.CreatedBy = CreatedBy;
             this.ChangedOn = ChangedOn;
             this.ChangedBy = ChangedBy;
