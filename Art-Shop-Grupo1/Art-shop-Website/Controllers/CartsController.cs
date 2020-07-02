@@ -18,7 +18,8 @@ namespace Art_shop_Website.Controllers
         // GET: Carts
         public ActionResult Index()
         {
-            return View(db.Carts.ToList());
+          
+            return View((List<CartItem>)Session["cart"]);
         }
 
         // GET: Carts/Details/5
@@ -36,6 +37,9 @@ namespace Art_shop_Website.Controllers
             return View(cart);
         }
 
+
+        
+
         // GET: Carts/Create
         public ActionResult Create(int? id)
         {
@@ -47,28 +51,22 @@ namespace Art_shop_Website.Controllers
 
             if (ModelState.IsValid)
             {
-                cart.Id = 1;
+              
                 cart.ItemCount = 1;
                 cart.CartDate = DateTime.Now;
                 cart.CreatedOn = DateTime.Now;
                 cart.ChangedOn = DateTime.Now;
-                cart.Cookie = "1";
+         
                 
                 cartitem.ProductId = id.Value;
-                cartitem.Price = (float)producto.Price;
+                cartitem.Price = producto.Price;
                 cartitem.Quantity = 1;
                 cartitem.CartId = cart.Id;
         
                 cartitem.CreatedOn = DateTime.Now;
                 cartitem.ChangedOn = DateTime.Now;
                 
-                db.Carts.Add(cart);
-                db.SaveChanges();
-
-                //cartitem.Id = 13;
-                cartitem.CartId = cart.Id;
-                db.CartsItem.Add(cartitem);
-                db.SaveChanges();
+              
 
                 if (Session["cart"] == null)
                 {
@@ -88,43 +86,26 @@ namespace Art_shop_Website.Controllers
                     Session["count"] = Convert.ToInt32(Session["count"]) + 1;
 
                 }
-             //  return RedirectToAction("Index");
+
+                cart.Cookie = Session.SessionID;
+                db.Carts.Add(cart);
+                db.SaveChanges();
+
+                cartitem.CartId = cart.Id;
+                db.CartsItem.Add(cartitem);
+                db.SaveChanges();
+
+
             }
-            return View((List<CartItem>)Session["cart"]);
-            //return View(cart);
+            return RedirectToAction("Index");
+            //return View((List<CartItem>)Session["cart"]);
+         
         }
 
 
 
 
-        // POST: Carts/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        /*  [HttpPost]
-          [ValidateAntiForgeryToken]
-          public ActionResult Create(Product producto)
-          {
-              Cart cart = new Cart();
-              CartItem cartitem = new CartItem();
-
-              if (ModelState.IsValid)
-              {
-
-                  cart.ItemCount = 1;
-                  cart.CartDate = DateTime.Now;
-                  cartitem.ProductId = producto.Id;
-                  //cartitem.Price = producto.Price;
-                  cartitem.Quantity = 1;
-                  cartitem.Id = cart.Id;
-                  db.Carts.Add(cart);
-                  db.CartsItem.Add(cartitem);
-                  db.SaveChanges();
-                  return RedirectToAction("Index");
-              }
-
-              return View(cart);
-          }
-        */
+       
         // GET: Carts/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -177,12 +158,12 @@ namespace Art_shop_Website.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart cart = db.Carts.Find(id);
-            if (cart == null)
+            CartItem cartitem = db.CartsItem.Find(id);
+            if (cartitem == null)
             {
                 return HttpNotFound();
             }
-            return View(cart);
+            return View(cartitem);
         }
 
         // POST: Carts/Delete/5
@@ -190,10 +171,21 @@ namespace Art_shop_Website.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cart cart = db.Carts.Find(id);
-            db.Carts.Remove(cart);
+           
+            CartItem cartitem = db.CartsItem.Find(id);
+            db.CartsItem.Remove(cartitem);
             db.SaveChanges();
+            
+
+            List<CartItem> li = (List<CartItem>)Session["cart"];
+            li.RemoveAll(x => x.Id == cartitem.Id);
+            Session["cart"] = li;
+            Session["count"] = Convert.ToInt32(Session["count"]) - 1;
+            ViewBag.cart = li.Count();
+            
+            
             return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)
