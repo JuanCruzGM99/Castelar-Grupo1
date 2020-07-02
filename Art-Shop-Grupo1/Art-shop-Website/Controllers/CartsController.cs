@@ -98,7 +98,7 @@ namespace Art_shop_Website.Controllers
 
             }
             return RedirectToAction("Index");
-            //return View((List<CartItem>)Session["cart"]);
+           
          
         }
 
