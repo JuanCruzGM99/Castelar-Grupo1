@@ -10,6 +10,7 @@ using Art_shop_Website.Services;
 
 namespace Art_shop_Website.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductController : BaseController
     {
         private BaseDataService<Product> db;
