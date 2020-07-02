@@ -28,5 +28,7 @@ namespace Art_Shop_Data.Services
         /// DbSet Product se utiliza para representar una tabla.
         public virtual DbSet<Error> Error { get; set; }
 
+        public System.Data.Entity.DbSet<Art_Shop_Data.Model.Cart> Carts { get; set; }
+        public System.Data.Entity.DbSet<Art_Shop_Data.Model.CartItem> CartsItem { get; set; }
     }
 }

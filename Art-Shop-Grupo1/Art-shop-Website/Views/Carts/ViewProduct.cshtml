@@ -1,0 +1,56 @@
+﻿@model Art_Shop_Data.Model.Product
+
+@{
+    ViewBag.Title = "Producto";
+}
+
+<h2>ViewProduct</h2>
+
+
+<p class=" texto">
+    Cuadro seleccionado
+</p>
+<table>
+
+    <tbody id="imagenes ">
+
+        <tr>
+            <td>
+                <div id="imagenes">
+                    <a target="_self" href="@Url.Action("Create", "Carts", new  { id = Model.Id  })">
+                        @Html.HiddenFor(modelItem => Model.Id);
+                        <img src="@Url.Content("~/Content/Image/" + @Html.DisplayFor(modelItem => Model.Image)) " alt="@Html.DisplayFor(modelItem =>Model.Title)">
+                    </a>
+                    </br>
+
+                    <a class="texto">@Html.DisplayNameFor(modelItem => Model.Id)</a>
+                    <a class="texto">@Html.DisplayFor(modelItem => Model.Id)</a>
+                    </br>
+                    <a class="texto">@Html.DisplayNameFor(modelItem => Model.Title)</a>
+                    <a class="texto">@Html.DisplayFor(modelItem => Model.Title)</a>
+                    </br>
+
+                    <a class="texto">@Html.DisplayNameFor(modelItem => Model.Price)</a>
+                    <a> $</a>
+                    <a class="texto">@Html.DisplayFor(modelItem => Model.Price)</a>
+                </div>
+            </td>
+        </tr>
+
+        
+        <p>
+            <a target="_self" href="@Url.Action("Create", "Carts", new  { id = Model.Id  })">
+                @Html.HiddenFor(modelItem => Model.Id);
+               Agregar Al Carrito / 
+            </a>
+
+            @Html.ActionLink("Volver al Catalogo", "Index", "Home")
+        </p>
+     
+
+
+
+    </tbody>
+
+
+</table>

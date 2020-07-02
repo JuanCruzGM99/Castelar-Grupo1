@@ -13,7 +13,7 @@ namespace Art_Shop_Data.Model
 
         public int ProductId { get; set; }
 
-        public float Price { get; set; }
+        public double Price { get; set; }
 
         public int Quantity { get; set; }
 
@@ -22,7 +22,7 @@ namespace Art_Shop_Data.Model
 
         }
 
-        public CartItem(int id, int CartId, int ProductId, float Price, int Quantity, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
+        public CartItem(int id, int CartId, int ProductId, double Price, int Quantity, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
         {
 
             this.Id = id;

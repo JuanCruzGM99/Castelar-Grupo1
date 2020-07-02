@@ -17,16 +17,16 @@ namespace Art_Shop_Data.Model
 
         public String Image { get; set; }
 
-        public double Price { get; set; }
+        public Double Price { get; set; }
 
         public int QuantitySold { get; set; }
 
-        public double AvgStars { get; set; }
+        public Double AvgStars { get; set; }
 
 
         public Product()
         {
-                
+           
         }
 
         public Product(int id, String Title, String Description, int ArtistaId, String Image, float Price, int QuantitySold, float AvgStars, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
