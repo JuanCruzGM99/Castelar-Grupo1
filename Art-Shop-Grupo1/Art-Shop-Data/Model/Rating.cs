@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Art_Shop_Data.Model
 
         public int ProductId { get; set; }
 
+        [DisplayName("Estrellas")]
         public int Stars { get; set; }
 
 

@@ -11,6 +11,7 @@ namespace Art_shop_Website.Controllers
     public class ABMController : Controller
     {
         // GET: ABM
+        [Authorize(Roles = "Admin")]
         public ActionResult AltaArtistasView()
         {
             var model = new Artist();

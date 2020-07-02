@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,18 +10,24 @@ namespace Art_Shop_Data.Model
 {
     public class Product : Identity
     {
+        [DisplayName("Titulo")]
         public String Title { get; set; }
 
+        [DisplayName("Descripcion")]
         public String Description { get; set; }
 
         public int ArtistId { get; set; }
 
+        [DisplayName("Imagen")]
         public String Image { get; set; }
 
+        [DisplayName("Precio")]
         public Double Price { get; set; }
 
+        [DisplayName("Cantidad vendida")]
         public int QuantitySold { get; set; }
 
+        [DisplayName("Promedio de estrellas")]
         public Double AvgStars { get; set; }
 
 
