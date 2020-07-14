@@ -9,7 +9,7 @@ namespace Art_Shop_Data.Model
     public class Error : Identity
     {
 
-        public int UserId { get; set; }
+        public String UserId { get; set; }
 
         public DateTime ErrorDate { get; set; }
 
@@ -30,7 +30,7 @@ namespace Art_Shop_Data.Model
                 
         }
 
-        public Error(int id, int UserId, DateTime ErrorDate, String IpAddress, String Exception, String Message, String EveryThing, String HttpReferer, String PathAndQuery, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
+        public Error(int id, String UserId, DateTime ErrorDate, String IpAddress, String Exception, String Message, String EveryThing, String HttpReferer, String PathAndQuery, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
         {
             this.Id = id;
             this.UserId = UserId;

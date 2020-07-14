@@ -8,6 +8,7 @@ using Art_Shop_Data.Model;
 
 namespace Art_shop_Website.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ABMController : Controller
     {
         // GET: ABM

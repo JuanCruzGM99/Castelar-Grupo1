@@ -12,10 +12,10 @@ namespace Art_Shop_Data.Model
 
         public String Cookie { get; set; }
 
+        [DisplayName("Fecha")]
         public DateTime CartDate { get; set; }
 
         [DisplayName("Cantidad")]
-
         public int ItemCount { get; set; }
 
         public Cart()

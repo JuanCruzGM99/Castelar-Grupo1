@@ -8,6 +8,8 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
+@{bool isAdmin = User.IsInRole("Admin"); }
 <body>
     <div class="contenedor">
      
@@ -18,7 +20,6 @@
             <p id="subtitulo">Galeria de Arte</p>
 
             <nav>
-
                 <div class="menu" id="par">
                     <a href="~/Home/Index">
                         <img class="icon" src="~/Content/image/icon1.png">
@@ -57,7 +58,53 @@
                 </div>
 
                 @Html.Partial("_LoginPartial")
+                    <div class="menu" id="par">
+                        <a href="~/Home/Index">
+                            <img class="icon" src="~/Content/image/icon1.png">
+                        </a>
+                        <p class="texto">Catalogo de Cuadros</p>
+                        <ul>
+                            <a id="Reserva_Item1" class="texto" href="~/Reserva/Index"></a>
+                        </ul>
+                    </div>
 
+				@if (isAdmin)
+				{
+
+                    <div class="menu" id="impar">
+                        <a href="~/Artist/Index">
+                            <img class="icon" src="~/Content/image/icon2.png">
+                        </a>
+                        <p class="texto">ABM</p>
+                        <ul>
+                             <li>
+                                <a href="/ABM/AltaArtistasView" class="menu_genero">
+                            <li>
+                                <a href="/Artist/Index" class="menu_genero"></a>
+                            </li>
+                        </ul>
+                    </div>
+				}
+                    <div class="menu" id="par">
+                        <a href="~/Home/Nosotros">
+                            <img class="icon" src="~/Content/image/icon3.png">
+                        </a>
+                        <p class="texto">Quienes somos</p>
+
+                    </div>
+				
+				@if (isAdmin)
+				{
+
+                    <div class="menu" id="impar">
+                        <a href="~/Product/IndexProduct">
+                            <img class="icon" src="~/Content/image/icon4.png">
+                        </a>
+                        <p class="texto">Cuadros</p>
+                    </div>
+
+				}
+                    @Html.Partial("_LoginPartial")
             </nav>
 
 
