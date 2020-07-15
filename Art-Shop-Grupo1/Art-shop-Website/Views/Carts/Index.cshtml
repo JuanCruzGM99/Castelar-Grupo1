@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Art_Shop_Data.Model.CartItem>
+
+@{
+    ViewBag.Title = "Carrito de Compras";
+}
+@{
+    double sum = 0;
+}
+
+<h2>Contenido Actual del Carrito </h2>
+
+<p class="byline">Hay un total de @Enumerable.Count(Model) productos</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+    </tr>
+
+ 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                $ @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+    @foreach (var item in Model)
+    {
+        sum = item.Price + sum;
+
+    }
+    
+    <tfoot>
+        <tr>
+            <td></td>
+
+            <td><b>Total</b></td>
+            <td>
+                $ @sum
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Comprar", "Buy")
+
+            </td>
+            <td>
+                @Html.ActionLink("Vaciar carrito", "Vaciar")
+
+            </td>
+        </tr>
+     
+    </tfoot>
+</table>
