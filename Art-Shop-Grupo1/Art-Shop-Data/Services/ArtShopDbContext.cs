@@ -30,5 +30,9 @@ namespace Art_Shop_Data.Services
 
         public System.Data.Entity.DbSet<Art_Shop_Data.Model.Cart> Carts { get; set; }
         public System.Data.Entity.DbSet<Art_Shop_Data.Model.CartItem> CartsItem { get; set; }
+        public System.Data.Entity.DbSet<Art_Shop_Data.Model.Order> Orders { get; set; }
+        public System.Data.Entity.DbSet<Art_Shop_Data.Model.OrderDetail> OrdersDetails { get; set; }
+
+         public System.Data.Entity.DbSet<Art_Shop_Data.Model.OrderNumber> OrdersNumbers{ get; set; }
     }
 }

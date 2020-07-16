@@ -28,6 +28,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Image)
                 </th>
+               
                 <th>
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
@@ -54,7 +55,8 @@
                 @Html.DisplayFor(mmodelItem => item.ArtistId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                <img src="~/Content/image/@item.Image" style="height:70px;width:auto" /> 
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

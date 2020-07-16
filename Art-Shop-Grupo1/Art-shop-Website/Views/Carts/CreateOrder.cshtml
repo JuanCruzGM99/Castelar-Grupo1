@@ -1,0 +1,45 @@
+﻿@model Art_Shop_Data.Model.Order
+
+
+@{
+    
+}
+
+<h2>Orden </h2>
+
+<p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Numero de Orden
+        </th>
+        <th>
+            Numero de Producto
+        </th>
+        <th>
+            Precio
+        </th>
+        <th>
+           Cantidad
+        </th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+    </tr>
+}
+
+</table>
