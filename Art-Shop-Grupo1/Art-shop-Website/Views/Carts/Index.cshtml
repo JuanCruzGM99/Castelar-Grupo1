@@ -9,6 +9,7 @@
 
 <h2>Contenido Actual del Carrito </h2>
 
+<p class="byline">Hay un total de @Enumerable.Count(Model) productos</p>
 
 <table class="table">
     <tr>
@@ -23,6 +24,7 @@
         </th>
     </tr>
 
+ 
     @foreach (var item in Model)
     {
         <tr>
@@ -37,7 +39,7 @@
             </td>
 
             <td>
-              
+
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
@@ -47,6 +49,7 @@
         sum = item.Price + sum;
 
     }
+    
     <tfoot>
         <tr>
             <td></td>
@@ -56,6 +59,16 @@
                 $ @sum
             </td>
         </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Comprar", "CreateOrder")
 
+            </td>
+            <td>
+                @Html.ActionLink("Vaciar carrito", "Vaciar")
+
+            </td>
+        </tr>
+     
     </tfoot>
 </table>

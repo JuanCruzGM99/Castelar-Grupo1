@@ -1,11 +1,13 @@
 ﻿using Art_Shop_Data.Services;
 using Art_Shop_Data.Model;
 using System;
-using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Net;
 using Art_shop_Website.Services;
 
 namespace Art_shop_Website.Controllers
@@ -51,7 +53,7 @@ namespace Art_shop_Website.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase newimage)
         {
             this.CheckAuditPattern(product, true);
             var list = db.ValidateModel(product);
@@ -59,6 +61,13 @@ namespace Art_shop_Website.Controllers
                 return View(product);
             try
             {
+                if (newimage.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(newimage.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Content/image"), _FileName);
+                    newimage.SaveAs(_path);
+                    product.Image = _FileName;
+                }
                 db.Create(product);
                 return RedirectToAction("IndexProduct");
 
@@ -88,7 +97,7 @@ namespace Art_shop_Website.Controllers
             return View(product);
         }
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase file)
         {
             this.CheckAuditPattern(product);
             var list = db.ValidateModel(product);
@@ -96,6 +105,13 @@ namespace Art_shop_Website.Controllers
                 return View(product);
             try
             {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Content/image"), _FileName);
+                    file.SaveAs(_path);
+                    product.Image = _FileName;
+                }
                 db.Update(product);
                 return RedirectToAction("IndexProduct");
 

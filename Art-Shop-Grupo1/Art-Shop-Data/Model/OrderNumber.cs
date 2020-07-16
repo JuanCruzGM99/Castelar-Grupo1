@@ -12,17 +12,11 @@ namespace Art_Shop_Data.Model
 
         public OrderNumber()
         {
-                
-        }
-
-        public OrderNumber(int id, int Number, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
-        {
-            this.Id = id;
-            this.Number = Number;
-            this.CreatedOn = CreatedOn;
-            this.CreatedBy = CreatedBy;
-            this.ChangedOn = ChangedOn;
-            this.ChangedBy = ChangedBy;
+         
+            this.CreatedOn = DateTime.Now;
+          
+            this.ChangedOn = DateTime.Now;
+           
 
         }
     }

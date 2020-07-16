@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,9 +8,12 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
+@{bool isAdmin = User.IsInRole("Admin"); }
 <body>
     <div class="contenedor">
         <header class="cabecera">
+		<a href="/Carts/Index"><img class="icon2" src="/Content/image/cart2.png"></a></>
             <h1 id="titulo"> ArtShop</h1>
 
 
@@ -28,6 +31,9 @@
                         </ul>
                     </div>
 
+				@if (isAdmin)
+				{
+
                     <div class="menu" id="impar">
                         <a href="~/Artist/Index">
                             <img class="icon" src="~/Content/image/icon2.png">
@@ -41,7 +47,7 @@
                             </li>
                         </ul>
                     </div>
-
+				}
                     <div class="menu" id="par">
                         <a href="~/Home/Nosotros">
                             <img class="icon" src="~/Content/image/icon3.png">
@@ -49,6 +55,9 @@
                         <p class="texto">Quienes somos</p>
 
                     </div>
+				
+				@if (isAdmin)
+				{
 
                     <div class="menu" id="impar">
                         <a href="~/Product/IndexProduct">
@@ -57,6 +66,7 @@
                         <p class="texto">Cuadros</p>
                     </div>
 
+				}
                     @Html.Partial("_LoginPartial")
 
             </nav>

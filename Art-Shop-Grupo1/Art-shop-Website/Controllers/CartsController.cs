@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Art_Shop_Data.Model;
 using Art_Shop_Data.Services;
+using Microsoft.Ajax.Utilities;
 
 namespace Art_shop_Website.Controllers
 {
@@ -18,8 +19,14 @@ namespace Art_shop_Website.Controllers
         // GET: Carts
         public ActionResult Index()
         {
-          
-            return View((List<CartItem>)Session["cart"]);
+            if ((List<CartItem>)Session["cart"] != null)
+            {
+                return View((List<CartItem>)Session["cart"]);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Carts/Details/5
@@ -43,7 +50,7 @@ namespace Art_shop_Website.Controllers
         // GET: Carts/Create
         public ActionResult Create(int? id)
         {
-            Cart cart = new Cart();
+          
             CartItem cartitem = new CartItem();
             
             Product producto = db.Product.Find(id);
@@ -52,34 +59,55 @@ namespace Art_shop_Website.Controllers
             if (ModelState.IsValid)
             {
               
-                cart.ItemCount = 1;
-                cart.CartDate = DateTime.Now;
-                cart.CreatedOn = DateTime.Now;
-                cart.ChangedOn = DateTime.Now;
-         
-                
-                cartitem.ProductId = id.Value;
-                cartitem.Price = producto.Price;
-                cartitem.Quantity = 1;
-                cartitem.CartId = cart.Id;
-        
-                cartitem.CreatedOn = DateTime.Now;
-                cartitem.ChangedOn = DateTime.Now;
+                      
                 
               
 
                 if (Session["cart"] == null)
                 {
+                    Cart cart = new Cart();
                     List<CartItem> li = new List<CartItem>();
 
                     li.Add(cartitem);
                     Session["cart"] = li;
                     ViewBag.cart = li.Count();
                     Session["count"] = 1;
+
+                    cart.ItemCount = 1;
+                    cart.CartDate = DateTime.Now;
+                    cart.CreatedOn = DateTime.Now;
+                    cart.ChangedOn = DateTime.Now;
+                    cart.Cookie = Session.SessionID;
+                    db.Carts.Add(cart);
+                    db.SaveChanges();
+
+                    cartitem.ProductId = id.Value;
+                    cartitem.Price = producto.Price;
+                    cartitem.Quantity = 1;
+                    cartitem.CartId = cart.Id;
+                    cartitem.CreatedOn = DateTime.Now;
+                    cartitem.ChangedOn = DateTime.Now;
                 }
                 else
                 {
+
+                    CartItem cartitem_ant;
                     List<CartItem> li = (List<CartItem>)Session["cart"];
+                    foreach (var item in li)
+                    {
+                       cartitem_ant = db.CartsItem.Find(item.Id);
+                        cartitem.CartId = cartitem_ant.CartId;
+                    }
+
+                        cartitem.ProductId = id.Value;
+                    cartitem.Price = producto.Price;
+                    cartitem.Quantity = 1;
+                
+                    cartitem.CreatedOn = DateTime.Now;
+                    cartitem.ChangedOn = DateTime.Now;
+
+
+
                     li.Add(cartitem);
                     Session["cart"] = li;
                     ViewBag.cart = li.Count();
@@ -87,18 +115,16 @@ namespace Art_shop_Website.Controllers
 
                 }
 
-                cart.Cookie = Session.SessionID;
-                db.Carts.Add(cart);
-                db.SaveChanges();
+             
 
-                cartitem.CartId = cart.Id;
+       
                 db.CartsItem.Add(cartitem);
                 db.SaveChanges();
 
 
             }
             return RedirectToAction("Index");
-            //return View((List<CartItem>)Session["cart"]);
+           
          
         }
 
@@ -150,7 +176,43 @@ namespace Art_shop_Website.Controllers
             }
             return View(cart);
         }
+        [Authorize]
+        public ActionResult CreateOrder()
+        {
+            List<CartItem> items = (List<CartItem>)Session["cart"];
 
+            Order order = new Order("");
+
+            OrderNumber orderNumber = db.OrdersNumbers.FirstOrDefault();
+            if(orderNumber == null)
+            {
+                orderNumber = new OrderNumber();
+                orderNumber.Number = 2;
+                db.OrdersNumbers.Add(orderNumber);
+                order.OrderNumber = 1;
+
+            }
+            else
+            {
+                order.OrderNumber = orderNumber.Number;
+                orderNumber.Number++;
+                db.Entry(orderNumber).State = EntityState.Modified;
+            }
+            order.OrderDate = DateTime.Now;
+            
+            order.Items = new List<OrderDetail>();
+            foreach(CartItem item in items)
+            {
+                OrderDetail detail = new OrderDetail(item.ProductId, item.Price, item.Quantity, "");
+                order.Items.Add(detail);
+                order.TotalPrice = detail.Price * (double)detail.Quantity;
+                order.ItemCount += detail.Quantity;
+            }
+            db.Orders.Add(order);
+
+            db.SaveChanges();
+            return View(order);
+    }
         // GET: Carts/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -188,6 +250,31 @@ namespace Art_shop_Website.Controllers
 
         }
 
+     
+     
+        public ActionResult Vaciar()
+        {
+            List<CartItem> li = (List<CartItem>)Session["cart"];
+          
+            foreach (var item in li)
+           {
+                CartItem cartitem = db.CartsItem.Find(item.Id);
+                db.CartsItem.Remove(cartitem);
+                db.SaveChanges();
+              
+
+            }
+
+           // li.RemoveAll(x => x.Id == cartitem.Id);
+
+            Session["cart"] = null;
+            Session["count"] = 0;
+            ViewBag.cart = li.Count();
+
+
+            return RedirectToAction("Index", "Home");
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
