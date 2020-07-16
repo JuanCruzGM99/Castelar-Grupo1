@@ -176,7 +176,43 @@ namespace Art_shop_Website.Controllers
             }
             return View(cart);
         }
+        [Authorize]
+        public ActionResult CreateOrder()
+        {
+            List<CartItem> items = (List<CartItem>)Session["cart"];
 
+            Order order = new Order("");
+
+            OrderNumber orderNumber = db.OrdersNumbers.FirstOrDefault();
+            if(orderNumber == null)
+            {
+                orderNumber = new OrderNumber();
+                orderNumber.Number = 2;
+                db.OrdersNumbers.Add(orderNumber);
+                order.OrderNumber = 1;
+
+            }
+            else
+            {
+                order.OrderNumber = orderNumber.Number;
+                orderNumber.Number++;
+                db.Entry(orderNumber).State = EntityState.Modified;
+            }
+            order.OrderDate = DateTime.Now;
+            
+            order.Items = new List<OrderDetail>();
+            foreach(CartItem item in items)
+            {
+                OrderDetail detail = new OrderDetail(item.ProductId, item.Price, item.Quantity, "");
+                order.Items.Add(detail);
+                order.TotalPrice = detail.Price * (double)detail.Quantity;
+                order.ItemCount += detail.Quantity;
+            }
+            db.Orders.Add(order);
+
+            db.SaveChanges();
+            return View(order);
+    }
         // GET: Carts/Delete/5
         public ActionResult Delete(int? id)
         {

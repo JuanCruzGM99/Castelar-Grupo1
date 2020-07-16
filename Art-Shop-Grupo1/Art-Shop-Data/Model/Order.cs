@@ -11,12 +11,12 @@ namespace Art_Shop_Data.Model
     {
 
         public int UserId { get; set; }
-
+        public List<OrderDetail> Items { get; set; }
         [DisplayName("Fecha de la orden")]
         public DateTime OrderDate { get; set; }
 
         [DisplayName("Precio Total")]
-        public float TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
 
         [DisplayName("Numero de orden")]
         public int OrderNumber { get; set; }
@@ -29,19 +29,13 @@ namespace Art_Shop_Data.Model
                 
         }
 
-        public Order(int id, int UserId, DateTime OrderDate, float TotalPrice, int OrderNumber, int Itemcount, DateTime CreatedOn, String CreatedBy, DateTime ChangedOn, String ChangedBy)
+        public Order(String UserBy)
         {
-
-            this.Id = id;
-            this.UserId = UserId;
-            this.OrderDate = OrderDate;
-            this.TotalPrice = TotalPrice;
-            this.OrderNumber = OrderNumber;
-            this.ItemCount = ItemCount;
-            this.CreatedOn = CreatedOn;
-            this.CreatedBy = CreatedBy;
-            this.ChangedOn = ChangedOn;
-            this.ChangedBy = ChangedBy;
+            this.UserId = 1;
+            this.CreatedOn = DateTime.Now;
+            this.CreatedBy = "1";
+            this.ChangedOn = DateTime.Now;
+            this.ChangedBy = "1";
         }
     }
 }

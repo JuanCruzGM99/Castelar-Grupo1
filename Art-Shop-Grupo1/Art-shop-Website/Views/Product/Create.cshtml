@@ -8,7 +8,7 @@
         <h4>Cuadro</h4>
     </p>
     <div>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Create","Product",FormMethod.Post,new{enctype = "multipart/form-data"}))
         {
         <div class="form">
             <hr />
@@ -31,10 +31,15 @@
                     @Html.EditorFor(model => model.ArtistId)
                 </div>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.Image)
                 <div>
                     @Html.EditorFor(model => model.Image)
+                </div>
+            </div>*@
+            <div class="form-group">
+                <div class="separator">
+                    @Html.TextBox("newimage", "", new { type = "file", required = "required" })
                 </div>
             </div>
             <div class="form-group">
